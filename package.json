@@ -1,0 +1,83 @@
+{
+  "name": "tourneykit",
+  "version": "1.0.0",
+  "description": "A kewl way to track a tournament while learning js fatigue",
+  "main": "index.js",
+  "scripts": {
+    "webpack": "cross-env webpack",
+    "test": "cross-env BABEL_ENV=commonjs mocha --compilers js:babel-core/register --reporter spec ./**/__test__/*.js",
+    "build": "cross-env NODE_ENV=production webpack --config build/webpack.config.js --color -p",
+    "build:clean": "cross-env rimraf ./dist/*",
+    "build:copyStatic": "rsync -r manifest.json browserconfig.xml favicon.ico app/images ./dist",
+    "build:swCache": "sw-precache --config=build/sw-precache-config.json",
+    "start": "cross-env NODE_ENV=development node ./src/server",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "npm run lint:eslint -- . ",
+    "lint:css": "echo \"No css lint enabled. U suck dude\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacobangel/tourneykit.git"
+  },
+  "keywords": [
+    "kewl",
+    "kewl",
+    "beans",
+    "cool"
+  ],
+  "author": "jacob.angel@gmail.com",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/jacobangel/tourneykit/issues"
+  },
+  "homepage": "https://github.com/jacobangel/tourneykit#readme",
+  "dependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.8",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-react": "^6.16.0",
+    "body-parser": "^1.15.2",
+    "css-loader": "^0.26.1",
+    "express": "^4.14.0",
+    "minimist": "^1.2.0",
+    "ngrok": "^2.2.1",
+    "express-session": "^1.14.1",
+    "fastclick": "^1.0.6",
+    "lodash": "^4.17.2",
+    "postcss-loader": "^1.1.1",
+    "preact": "^7.1.0",
+    "preact-render-to-string": "^3.3.0",
+    "react": "^15.4.1",
+    "react-router": "v4.0.0-alpha.6",
+    "react-router-redux": "^4.0.5",
+    "redux": "^3.6.0",
+    "webpack": "^2.1.0-beta.27",
+    "sw-precache": "^4.0.0",
+    "whatwg-fetch": "^2.0.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.5.3",
+    "babel-cli": "^6.18.0",
+    "babel-eslint": "^7.1.1",
+    "babel-preset-latest": "^6.16.0",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "cross-env": "^1.0.8",
+    "chai": "^3.5.0",
+    "rimraf": "^2.5.2",
+    "sinon": "^1.17.4",
+    "eslint": "^3.11.1",
+    "eslint-plugin-flowtype": "^2.29.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.1",
+    "eslint-plugin-react": "^6.7.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "flow-bin": "^0.36.0",
+    "mocha": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^2.1.0-beta.27",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
