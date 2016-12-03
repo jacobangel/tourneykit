@@ -1,24 +1,25 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { Router, Route, Link } from 'react-router'
+import { Link } from 'react-router'
 
 import TournamentList from 'components/TournamentList';
 
-const App = () => {
-  return (
-    <div>
-      <h1>Tourneykit</h1>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/tournament">Tournaments</Link></li>
-      </ul>
+const App = React.createClass({
+  render() {
+    console.log('rendering');
+    return (
       <div>
-        <button>Add Tournament</button>
+        <h1>Tourneykit</h1>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/add-tourney">Tournaments</Link></li>
+        </ul>
+        <div>
+          {this.props.children}
+        </div>
       </div>
-      <TournamentList />
-    </div>
-  );
-};
+    );
+  }
+})
 
-App.propTypes = {}
 export default App;

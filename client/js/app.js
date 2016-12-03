@@ -1,16 +1,29 @@
 import React from 'react';
-import { Router, Route, Link } from 'react-router'
-import App from './containers/App';
+import { BrowserRouter, Match, Miss, Link } from 'react-router'
 import routes from './routes';
+import { render } from 'react-dom';
+import { hashHistory } from 'react-router'
 
-function loadRoute(cb) {
- return (module) => cb(null, module.default);
-}
+import App from './containers/App';
+import Home from './pages/Home';
 
-const routerProps = {
-  component: App,
-  path: '/',
-  childRoutes: routes
-};
-const Rout = ( <Router routes={routerProps} /> )
-export default Rout;
+console.log('routing@', routes);
+// wrap `Match` and use this everywhere instead, then when
+// sub routes are added to any route it'll work
+const MatchWithSubRoutes = (route) => (
+  <Match {...route} render={(props) => (
+    // pass the sub-routes down to keep nesting
+    <route.component {...props} routes={route.routes}/>
+  )}/>
+)
+
+render((
+  <BrowserRouter>
+    <App>
+      <Match exactly pattern="/" component={Home} />
+      {routes.map((route, i) => (
+        <MatchWithSubRoutes key={i} {...route}/>
+      ))}
+    </App>
+  </BrowserRouter>
+), document.getElementById('root'));

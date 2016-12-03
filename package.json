@@ -9,7 +9,7 @@
     "build": "cross-env webpack --config build/webpack.config.js --color",
     "build:prod": "cross-env NODE_ENV=production webpack --config build/webpack.config.js --color -p",
     "build:clean": "cross-env rimraf ./dist/*",
-    "build:copyStatic": "rsync -r manifest.json browserconfig.xml favicon.ico app/images ./dist",
+    "build:copyStatic": "rsync -r ./client/manifest.json ./client/browserconfig.xml ./client/favicon.ico client/images ./dist",
     "build:swCache": "sw-precache --config=build/sw-precache-config.json",
     "start": "cross-env NODE_ENV=development node ./server",
     "lint": "npm run lint:js && npm run lint:css",
