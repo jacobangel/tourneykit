@@ -6,15 +6,13 @@ var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-
 var plugins = [
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
   }),
-  new webpack.optimize.OccurenceOrderPlugin(),
   new HtmlWebpackPlugin({
     chunks: ['app'],
-    template: 'index.html', // eslint-disable-line no-use-before-define
+    template: 'client/index.html', // eslint-disable-line no-use-before-define
   }),
   new ExtractTextPlugin("[name].css")
 ];
@@ -27,28 +25,26 @@ var reactExternal = {
 
 module.exports = {
   entry: {
-      app: './app/index.js',
-      service: './app/js/workers/service-workers.js',
-      worker: './app/js/workers/workers.js'
+      app: './client/index.js',
+      // service: './app/js/workers/service-workers.js',
+      // worker: './app/js/workers/workers.js'
   },
   module: {
     loaders: [
       { test: /\.jsx?$/, exclude: /node_modules/, loader: "babel-loader" },
-      { test: /\.css?$/, loader: ExtractTextPlugin.extract(
-        'style-loader',
-        'css-loader!postcss-loader'
-      )},
+      { test: /\.css?$/, loader: ExtractTextPlugin.extract({
+        fallbackLoader: 'style-loader',
+        loader: 'css-loader?importLoaders=1!postcss-loader'
+      })},
       { test: /\.less?$/, exclude: /node_modules/, loaders: [
         'style',
-        'css',
+        'css-loader?importLoaders=2',
         'postcss',
         'less'
       ]}
     ],
   },
-  postcss: function () {
-    return [autoprefixer({ browsers: ['last 3 versions'] })];
-  },
+
   output: {
     path: path.join(__dirname, "../dist"),
     publicPath: '/',
@@ -64,7 +60,7 @@ module.exports = {
   },
   plugins: plugins,
   resolve: {
-    extensions: ['', '.js', '.jsx'],
-    modulesDirectories: ["shared", "node_modules"]
+    extensions: ['.js', '.jsx'],
+    modules: ["shared", "node_modules"]
   }
 };
