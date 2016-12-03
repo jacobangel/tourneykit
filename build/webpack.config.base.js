@@ -61,6 +61,10 @@ module.exports = {
   plugins: plugins,
   resolve: {
     extensions: ['.js', '.jsx'],
-    modules: ["shared", "node_modules"]
+    modules: ["shared", "node_modules"],
+    alias: {
+      'react': 'preact-compat',
+      'react-dom': 'preact-compat'
+    }
   }
 };

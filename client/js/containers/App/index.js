@@ -1,10 +1,15 @@
-const React = require('react');
+import React from 'react';
+// need to set up resolves in webpack.
+import TournamentList from '../../components/TournamentList';
 
 const App = () => {
   return (
-    <div> Sup </div>
+    <div>
+      <h1>Sup</h1>
+      <TournamentList />
+    </div>
   );
 };
 
 App.propTypes = {}
-module.exports = App;
+export default App;

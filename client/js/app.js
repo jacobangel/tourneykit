@@ -1,2 +1,6 @@
-const React = require('react');
-const { Provider } = require('react-redux');
+import React from 'react';
+
+import App from './containers/App';
+
+
+export default App;
