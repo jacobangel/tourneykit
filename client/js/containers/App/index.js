@@ -1,11 +1,20 @@
-import React from 'react';
-// need to set up resolves in webpack.
-import TournamentList from '../../components/TournamentList';
+import React from 'react'
+import { render } from 'react-dom'
+import { Router, Route, Link } from 'react-router'
+
+import TournamentList from 'components/TournamentList';
 
 const App = () => {
   return (
     <div>
-      <h1>Sup</h1>
+      <h1>Tourneykit</h1>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/tournament">Tournaments</Link></li>
+      </ul>
+      <div>
+        <button>Add Tournament</button>
+      </div>
       <TournamentList />
     </div>
   );
