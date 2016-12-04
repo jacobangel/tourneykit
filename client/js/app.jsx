@@ -1,6 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Match } from 'react-router';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+
+import tourneyKitApp from './reducers';
+
+let store = createStore(tourneyKitApp)
 
 import routes from './routes';
 import App from './containers/App';
@@ -16,14 +22,15 @@ const MatchWithSubRoutes = route => (
   )}
   />
 );
-
 render((
   <BrowserRouter>
-    <App>
-      <Match exactly pattern="/" component={Home} />
-      {routes.map((route, i) => (
-        <MatchWithSubRoutes key={i} {...route} />
-      ))}
-    </App>
+    <Provider store={store}>
+      <App>
+        <Match exactly pattern="/" component={Home} />
+        {routes.map((route, i) => (
+          <MatchWithSubRoutes key={i} {...route} />
+        ))}
+      </App>
+    </Provider>
   </BrowserRouter>
 ), document.getElementById('root'));

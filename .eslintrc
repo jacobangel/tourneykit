@@ -5,6 +5,7 @@
     "node": true
   },
   "rules": {
-    "react/prefer-es6-class": "off"
+    "react/prefer-es6-class": "off",
+    "import/no-extraneous-dependencies": "off"
   }
 }

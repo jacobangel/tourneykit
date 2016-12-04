@@ -64,8 +64,8 @@ module.exports = {
     extensions: ['.js', '.jsx'],
     modules: ["shared", "node_modules", "client/js"],
     alias: {
-      'react': 'preact-compat',
-      'react-dom': 'preact-compat'
+      // 'react': 'preact-compat',
+      // 'react-dom': 'preact-compat'
     }
   }
 };

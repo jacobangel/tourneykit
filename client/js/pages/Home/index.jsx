@@ -1,17 +1,37 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addTournament } from 'actions';
 import TournamentList from 'components/TournamentList';
 
-const Home = React.createClass({
-  render() {
-    return (
-      <div>
-        <h1>Home</h1>
-        <TournamentList />
-        {this.props.children}
-      </div>
-    );
-  },
-});
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    state,
+  };
+};
 
-Home.propTypes = {};
-export default Home;
+const mapDispatchToProps = (dispatch) => {
+  console.log(dispatch);
+  return {
+    onAddTourneyClick: (id = Math.random()) => {
+      dispatch(addTournament(id));
+    },
+  };
+};
+
+const Home = ({
+  onAddTourneyClick,
+}) => (
+  <div>
+    <h1>Home</h1>
+    <div>
+      <button onClick={onAddTourneyClick}>New Tournament</button>
+    </div>
+    <TournamentList />
+  </div>
+);
+
+Home.propTypes = {
+  onAddTourneyClick: React.PropTypes.func,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

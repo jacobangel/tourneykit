@@ -1,7 +1,8 @@
 const { combineReducers } = require('redux');
+import tourneys from './tourneys';
 
 const App = combineReducers({
-  noop: (state = {}/*, action*/) => state,
+  tourneys
 });
 
 module.exports = App;
