@@ -1,4 +1,5 @@
 import React from 'react';
+
 function asyncComponent(getComponent) {
   class AsyncComponent extends React.Component {
     componentWillMount() {

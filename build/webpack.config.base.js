@@ -36,11 +36,12 @@ module.exports = {
         fallbackLoader: 'style-loader',
         loader: 'css-loader?importLoaders=1!postcss-loader'
       })},
+      { test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url-loader?limit=10000' },
       { test: /\.less?$/, exclude: /node_modules/, loaders: [
-        'style',
+        'style-loader',
         'css-loader?importLoaders=2',
-        'postcss',
-        'less'
+        'postcss-loader',
+        'less-loader'
       ]}
     ],
   },
