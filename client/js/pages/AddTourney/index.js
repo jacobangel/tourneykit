@@ -11,5 +11,5 @@ const AddTourney = (props) => {
   );
 };
 
-AddTourney.propTypes = {}
+AddTourney.propTypes = {};
 export default AddTourney;

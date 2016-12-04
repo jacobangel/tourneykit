@@ -13,6 +13,7 @@
     "build:swCache": "sw-precache --config=build/sw-precache-config.json",
     "start": "cross-env NODE_ENV=development node ./server",
     "lint": "npm run lint:js && npm run lint:css",
+    "lint:fix": "eslint ./client/js --fix",
     "lint:js": "npm run lint:eslint -- ./client/js ",
     "lint:eslint": "eslint",
     "lint:css": "echo \"No css lint enabled. U suck dude\""

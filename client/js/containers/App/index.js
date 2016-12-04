@@ -1,6 +1,6 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { Link } from 'react-router'
+import React from 'react';
+import { render } from 'react-dom';
+import { Link } from 'react-router';
 
 import TournamentList from 'components/TournamentList';
 
@@ -19,7 +19,7 @@ const App = React.createClass({
         </div>
       </div>
     );
-  }
-})
+  },
+});
 
 export default App;

@@ -1,6 +1,6 @@
 
 function loadRoute(cb) {
- return (module) => cb(null, module.default);
+  return module => cb(null, module.default);
 }
 import Home from './pages/Home';
 
@@ -9,18 +9,18 @@ function asyncComponent(getComponent) {
   class AsyncComponent extends React.Component {
     componentWillMount() {
       if (!this.state.Component) {
-        getComponent().then(Component => {
-          AsyncComponent.Component = Component
-          this.setState({ Component })
-        })
+        getComponent().then((Component) => {
+          AsyncComponent.Component = Component;
+          this.setState({ Component });
+        });
       }
     }
     render() {
-      const { Component } = this.state
+      const { Component } = this.state;
       if (Component) {
-        return <Component {...this.props} />
+        return <Component {...this.props} />;
       }
-      return null
+      return null;
     }
   }
 
@@ -34,14 +34,14 @@ const routes = [
   {
     pattern: '/add-tourney',
     component: asyncComponent(() =>
-      System.import('./pages/AddTourney').then(module => module.default)
-    )
+      System.import('./pages/AddTourney').then(module => module.default),
+    ),
   },
   {
     pattern: '/tourney/:key',
     component: asyncComponent(() =>
-      System.import('./pages/AddTourney').then(module => module.default)
-    )
+      System.import('./pages/AddTourney').then(module => module.default),
+    ),
   },
-]
+];
 export default routes;
