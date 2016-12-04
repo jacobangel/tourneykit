@@ -3,5 +3,8 @@
   "env": {
     "browser": true,
     "node": true
+  },
+  "rules": {
+    "react/prefer-es6-class": "off"
   }
 }

@@ -32,3 +32,4 @@ This is a learning project.
 - Implement a service worker, make a pass at lighthouse
 - Express for backend I guess
 - Attempt to port to Polymer Web Components, and another light stack thingie.
+- see what AirBnB's sublime linter is all about.

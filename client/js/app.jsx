@@ -1,13 +1,11 @@
 import React from 'react';
-import { BrowserRouter, Match, Miss, Link } from 'react-router';
-import routes from './routes';
+import { BrowserRouter, Match } from 'react-router';
 import { render } from 'react-dom';
-import { hashHistory } from 'react-router';
 
+import routes from './routes';
 import App from './containers/App';
 import Home from './pages/Home';
 
-console.log('routing@', routes);
 // wrap `Match` and use this everywhere instead, then when
 // sub routes are added to any route it'll work
 const MatchWithSubRoutes = route => (
