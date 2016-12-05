@@ -1,10 +1,13 @@
 import { Link } from 'react-router';
 import React from 'react';
 
-const TournamentSummary = ({ title, }) => (
+const TournamentSummary = ({ title, id }) => (
   <div>
     <h2>{title}</h2>
-    <Link to={'#'}>View</Link>
+    <ul>
+      <li><Link to={`tourney/${id}`}>view</Link></li>
+      <li><Link to={`tourney/${id}/edit`}>edit</Link></li>
+    </ul>
   </div>
 );
 

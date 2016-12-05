@@ -5,12 +5,11 @@ import style from './App.less';
 const App = props => (
   <div className={style.wrapper}>
     <div>
-      <h1>Tourneykit</h1>
+      <h1 className={style.logo}>Tourneykit</h1>
       <ul>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/add-tourney">Tournaments</Link></li>
       </ul>
-      <div>
+      <div className={style.content}>
         {props.children}
       </div>
     </div>
