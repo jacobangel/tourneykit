@@ -1,7 +1,13 @@
 import React from 'react';
 
 function asyncComponent(getComponent) {
-  class AsyncComponent extends React.Component {
+  return class AsyncComponent extends React.Component {
+    constructor() {
+      super();
+      this.Component = null;
+      this.state = { Component: AsyncComponent.Component };
+    }
+
     componentWillMount() {
       if (!this.state.Component) {
         getComponent().then((Component) => {
@@ -10,6 +16,7 @@ function asyncComponent(getComponent) {
         });
       }
     }
+
     render() {
       const { Component } = this.state;
       if (Component) {
@@ -17,12 +24,7 @@ function asyncComponent(getComponent) {
       }
       return null;
     }
-  }
-
-  AsyncComponent.Component = null;
-  AsyncComponent.state = { Component: AsyncComponent.Component };
-
-  return AsyncComponent;
+  };
 }
 
 export default asyncComponent;

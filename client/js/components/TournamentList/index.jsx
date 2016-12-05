@@ -1,11 +1,26 @@
 import React from 'react';
+import TournamentSummary from './TournamentSummary'
 
-const TournamentList = props => (
-  <div>
-    <h2>Tourmanent List</h2>
-    {props.children}
-  </div>
-);
+const TournamentList = ({ children, ...props }) => {
+  const {
+    tourneys,
+  } = props;
+  return (
+    <div>
+      <h2>Tourmanent List</h2>
+      {tourneys.map((newProps, i) => <TournamentSummary key={i} {...newProps} />)}
+      {children}
+    </div>
+  );
+};
 
-TournamentList.propTypes = { children: React.PropTypes.children };
+TournamentList.defaultProps = {
+  tourneys: [],
+};
+
+TournamentList.propTypes = {
+  children: React.PropTypes.func,
+  tourneys: React.PropTypes.arrayOf(React.PropTypes.any),
+};
+
 export default TournamentList;

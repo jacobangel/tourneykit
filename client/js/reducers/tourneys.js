@@ -1,5 +1,7 @@
 import { ADD_TOURNAMENT } from 'actions/index.js';
 
+let id = 0;
+
 const initialState = {
   tournaments: []
 }
@@ -9,7 +11,12 @@ const tourneys =  (state = initialState, action) => {
       return Object.assign({}, state, {
         tournaments: [
           ...state.tournaments,
-          { title: "Why Hello" }
+          {
+            title: 'New Tourney',
+            players: [],
+            id: ++id,
+            inProgress: false,
+          }
         ]
       })
 
