@@ -11,6 +11,11 @@ export function addTournament() {
 
 export function editTournament({ id, ...props }) {
   console.log('editing tournament', id, props);
+  if (typeof props.players === 'string') {
+    props.players = props.players.split(',');
+  } else if (!props.players) {
+    props.players = [];
+  }
   return {
     type: EDIT_TOURNAMENT,
     id,

@@ -28,7 +28,7 @@ ViewTourney.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  return { ...state.tourneys[ownProps.params.key] };
+  return { ...state.tourneys.tournaments[ownProps.params.key] };
 };
 
 const mapDispatchToProps = (dispatch) => {

@@ -1,6 +1,8 @@
 import React from 'react';
+import capitalize from 'lodash/capitalize';
 import { connect } from 'react-redux';
 import { editTournament } from 'actions';
+import { Redirect } from 'react-router';
 /**
 title: 'New Tourney',
 players: [],
@@ -14,7 +16,10 @@ const EditTourney = React.createClass({
   },
 
   getInitialState() {
-    return {};
+    return {
+      goBack: false,
+      ...this.props.initialState,
+    };
   },
 
   updateState(value, key) {
@@ -29,18 +34,28 @@ const EditTourney = React.createClass({
     this.props.onEditTourney(Object.assign({
       id: this.props.params.key,
     }, this.state));
+    this.setState({
+      goBack: true,
+    });
   },
 
   resetState(e) {
-    console.log('resetting');
     e.preventDefault();
+    this.setState(this.getInitialState());
   },
 
   render() {
+    if (this.state.goBack) {
+      return <Redirect to="/" />;
+    }
     const fields = ['title', 'inProgress', 'players', 'title'].map(field => (
       <div key={`form-${field}`}>
         <span>{field}</span>
-        <input type="text" onBlur={(e) => { this.updateState(e.target.value, field); }} />
+        <input
+          type="text"
+          value={this.state[field]}
+          onBlur={(e) => { this.updateState(e.target.value, field); }}
+        />
       </div>
     ));
 
@@ -65,8 +80,9 @@ EditTourney.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state, ownProps);
-  return { tournament: state.tourneys[ownProps.params.key] };
+  const tourney = state.tourneys.tournaments.find(({ id }) => id === ownProps.params.key) || {};
+  console.log(state, ownProps, tourney);
+  return { initialState: { ...tourney }, ...tourney };
 };
 
 const mapDispatchToProps = (dispatch) => {

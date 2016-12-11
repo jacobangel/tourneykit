@@ -6,7 +6,7 @@ const initialState = {
   tournaments: [],
 };
 
-const tourneys =  (state = initialState, action) => {
+const tourneys = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TOURNAMENT:
       id += 1;
