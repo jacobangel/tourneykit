@@ -6,7 +6,7 @@ import { createStore } from 'redux'
 
 import tourneyKitApp from './reducers';
 
-let store = createStore(tourneyKitApp)
+const store = createStore(tourneyKitApp)
 
 import routes from './routes';
 import App from './containers/App';

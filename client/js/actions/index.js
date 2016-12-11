@@ -6,11 +6,14 @@ export const EDIT_TOURNAMENT = 'EDIT_TOURNAMENT';
 export function addTournament() {
   return {
     type: ADD_TOURNAMENT,
-  }
+  };
 }
-export function editTournment(id) {
+
+export function editTournament({ id, ...props }) {
+  console.log('editing tournament', id, props);
   return {
-    type: ADD_TOURNAMENT,
-    id
-  }
+    type: EDIT_TOURNAMENT,
+    id,
+    state: props,
+  };
 }

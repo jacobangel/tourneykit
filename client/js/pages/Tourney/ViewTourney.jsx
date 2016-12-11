@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 const ViewTourney = ({ title, players, id, inProgress }) => {
   return (
@@ -25,4 +26,17 @@ ViewTourney.propTypes = {
   players: React.PropTypes.arrayOf(React.PropTypes.string),
   title: React.PropTypes.string,
 };
-export default ViewTourney;
+
+const mapStateToProps = (state, ownProps) => {
+  return { ...state.tourneys[ownProps.params.key] };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onEditTourney: (state) => {
+      dispatch(editTournament(state));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ViewTourney);
